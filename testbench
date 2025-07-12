@@ -1,0 +1,25 @@
+module test_seven_segment_decoder;
+    reg [3:0] digit;
+    wire [6:0] seg;
+
+    seven_segment_decoder uut (
+        .digit(digit),
+        .seg(seg)
+    );
+
+    initial begin
+      $dumpfile("seven_segment_dedecter");
+      $dumpvars(0);
+      $display("Digit | Segments");
+        $display("-------------------");
+
+       
+        for (digit = 0; digit < 10; digit = digit + 1) begin
+            #10;
+            $display("  %d   | %b", digit, seg);
+        end
+
+        #10;
+        $finish;
+    end
+endmodule
